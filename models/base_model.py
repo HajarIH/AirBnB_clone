@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """a module that defines a BaseModel"""
 
+import models
 import uuid
 from datetime import datetime
 
@@ -19,6 +20,8 @@ class BaseModel:
                     self.__dict__[key] = datetime.strptime(value, time_f)
                 else:
                     self.__dict__[key] = value
+        else:
+            models.storage.new(self)
 
     def __str__(self):
         """print: [<class name>] (<self.id>) <self.__dict__>"""
@@ -29,6 +32,7 @@ class BaseModel:
         """updates the public instance attribute
         updated_at with the current datetime"""
         self.updated_at = datetime.now()
+        models.storage.save()
 
     def to_dict(self):
         """ returns a dictionary containing all keys/values of __dict__"""
