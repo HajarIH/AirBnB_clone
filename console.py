@@ -141,7 +141,7 @@ class HBNBCommand(cmd.Cmd):
                     obj.__dict__[key] = vtype(value)
                 else:
                     obj.__dict__[key] = value
-        sorage.save()
+        storage.save()
 
 if __name__ == '__main__':
         HBNBCommand().cmdloop()
