@@ -113,6 +113,15 @@ class HBNBCommand(cmd.Cmd):
                     B.append(obj.__str__())
             print(B)
 
+    def do_count(self, arg):
+        """counts the instances of a class"""
+        A = parse(arg)
+        c = 0
+        for i in storage.all().values():
+            if A[0] == obj.__class__.__name__:
+                c += 1
+        print(c)
+
     def do_update(self, arg):
         """ Updates an instance based on the class name and id"""
         A = parse(arg)
