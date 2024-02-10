@@ -95,7 +95,7 @@ class HBNBCommand(cmd.Cmd):
             B = []
             for obj in storage.all().values():
                 if len(A) > 0 and A[0] == obj.__class__.__name__:
-                    B.append(obj.__str())
+                    B.append(obj.__str__())
                 elif len(A) == 0:
                     B.append(obj.__str__())
             print(B)
