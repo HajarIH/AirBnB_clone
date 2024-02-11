@@ -102,17 +102,18 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, arg):
         """Prints all string representation of all instances"""
-        A = parse(arg)
-        if len(A) > 0 and A[0] not in HBNBCommand.__classes:
+        clss = HBNBCommand.__classes
+        class_n = parse(arg)[0] if arg else None
+        if class_n and class_n not in clss:
             print("** class doesn't exist **")
-        else:
-            B = []
-            for obj in storage.all().values():
-                if len(A) > 0 and A[0] == obj.__class__.__name__:
-                    B.append(obj.__str__())
-                elif len(A) == 0:
-                    B.append(obj.__str__())
-            print(B)
+            return
+        instance = storage.all().values()
+        if class_n:
+            instance = [
+                    obj for obj in instance
+                    if obj.__class__.__name__ == class_n]
+        R = [str(obj) for obj in instance]
+        print(R)
 
     def do_count(self, arg):
         """counts the instances of a class"""
