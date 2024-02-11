@@ -118,7 +118,7 @@ class HBNBCommand(cmd.Cmd):
         A = parse(arg)
         c = 0
         for i in storage.all().values():
-            if A[0] == obj.__class__.__name__:
+            if A[0] == i.__class__.__name__:
                 c += 1
         print(c)
 
@@ -164,6 +164,22 @@ class HBNBCommand(cmd.Cmd):
                 else:
                     obj.__dict__[key] = value
         storage.save()
+
+    def default(self, arg):
+        """defines class.method() synthaxe"""
+        List = arg.split('.')
+        class_n = List[0]
+        cmd = List[1].split('(')
+        mthd = cmd[0]
+        dictionary = {
+                "all": self.do_all,
+                "show": self.do_show,
+                "destroy": self.do_destroy,
+                "update": self.do_update,
+                "count": self.do_count}
+        if mthd in dictionary.keys():
+            return dictionary[mthd]("{} {}".format(class_n, ""))
+        return False
 
 if __name__ == '__main__':
         HBNBCommand().cmdloop()
