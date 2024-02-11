@@ -21,15 +21,15 @@ def parse(arg):
         if bracket is None:
             return [i.strip(",") for i in split(arg)]
         else:
-            lexer = split(arg[:bracket.start()])
-            retl = [i.strip(",") for i in lexer]
-            retl.append(braket.group())
-            return retl
+            L = split(arg[:bracket.start()])
+            R = [i.strip(",") for i in L]
+            R.append(braket.group())
+            return R
     else:
-        lexer = split(arg[:curly.start()])
-        retl = [i.strip(",") for i in lexer]
-        retl.append(curly.group())
-        return retl
+        L = split(arg[:curly.start()])
+        R = [i.strip(",") for i in L]
+        R.append(curly.group())
+        return R
 
 
 class HBNBCommand(cmd.Cmd):
