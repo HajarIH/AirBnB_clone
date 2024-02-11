@@ -14,8 +14,8 @@ from models.review import Review
 
 
 def parse(arg):
-    curly = re.search("\{(.*?)\}", arg)
-    bracket = re.search("\[(.*?)\]", arg)
+    curly = re.search(r'\{(.*?)\}', arg)
+    bracket = re.search(r"\[(.*?)\]", arg)
 
     if curly is None:
         if bracket is None:
@@ -30,6 +30,7 @@ def parse(arg):
         retl = [i.strip(",") for i in lexer]
         retl.append(curly.group())
         return retl
+
 
 class HBNBCommand(cmd.Cmd):
     """Defines HBNB command interpreter"""
@@ -158,7 +159,8 @@ class HBNBCommand(cmd.Cmd):
             obj = dict_1["{}.{}".format(A[0], A[1])]
             for key, value in eval(A[2]).items():
                 if (key in obj.__class__.__dict__.keys() and
-                        type(obj.__class__.__dict__[key]) in {str, int, float}):
+                        type(obj.__class__.__dict__[key]) in {
+                            str, int, float}):
                     vtype = type(obj.__class.__dict__[key])
                     obj.__dict__[key] = vtype(value)
                 else:
@@ -181,5 +183,6 @@ class HBNBCommand(cmd.Cmd):
             return dictionary[mthd]("{} {}".format(class_n, ""))
         return False
 
+
 if __name__ == '__main__':
-        HBNBCommand().cmdloop()
+    HBNBCommand().cmdloop()
