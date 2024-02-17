@@ -3,15 +3,11 @@ header{
 	height: 70px;
 	width: 100%;
 	border-bottom: 1px solid #CCCCCC;
-	display: flex;
-	align-items: center;
 }
-header.logo{
-	content: '';
-	width: 142px;
+header .logo{
+	width: 100px;
 	height: 60px;
-	background-size: contain;
-	background-repeat: no repeat;
-	background-image: url("images\logo.png") center;
-	padding-left: 20px;
+	background-repeat: no-repeat;
+	background: url("../images/logo.png") center;
+	padding: 0px 20px;
 }
