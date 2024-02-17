@@ -7,6 +7,8 @@ header{
 	align-items: center;
 }
 header.logo{
-	background: url("../images/logo.png") no-repeat center;
+	width: 142px;
+	height: 60px;
+	background: url("images/.logo.png") no-repeat center;
 	padding-left: 20px;
 }
