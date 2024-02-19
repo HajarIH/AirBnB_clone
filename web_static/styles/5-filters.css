@@ -21,6 +21,10 @@ Section.filters button{
     border-radius: 4px;
 }
 
+section.filters button:hover{
+    opacity: 0.9;
+}
+
 .locations{
     text-align: left;
     height: 100%;

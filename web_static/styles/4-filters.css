@@ -21,3 +21,7 @@ section.filters button{
     margin-right: 30px;
     opacity: 1;
 }
+
+section.filters button:hover{
+    opacity: 0.9;
+}
